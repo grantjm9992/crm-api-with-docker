@@ -5,7 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Ramsey\Uuid\Uuid;
 
-class ContactType extends Model
+class ContactType extends BaseModel
 {
     protected $table = "contact_type";
 
@@ -14,12 +14,12 @@ class ContactType extends Model
         'name',
         'active'
     ];
-    
+
     protected $keyType = 'string';
 
     public $incrementing = false;
-    
-    protected static function boot()
+
+    public static function boot()
     {
         parent::boot();
 

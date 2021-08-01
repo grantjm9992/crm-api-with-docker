@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Passport\HasApiTokens;
@@ -89,7 +90,7 @@ class User extends Authenticatable
         return $this->hasOne(\App\Role::class);
     }
 
-    public function company()
+    public function company(): BelongsTo
     {
         return $this->belongsTo(\App\Company::class);
     }

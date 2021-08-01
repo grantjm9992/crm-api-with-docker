@@ -29,7 +29,7 @@ class ApiToken
         return substr($authWithBearer, 7);
     }
 
-    public static function getUserFromRequest(\Illuminate\Http\Request $request)
+    public static function getUserFromRequest(\Illuminate\Http\Request $request): User
     {
         $apiToken = self::getTokenFromRequest($request);
         return User::where('api_token', $apiToken)->first();

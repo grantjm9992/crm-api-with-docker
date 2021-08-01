@@ -28,6 +28,8 @@ Route::resource('campaigns', 'API\CampaignController');
 Route::resource('products', 'API\ProductsController');
 Route::resource('tasks', 'API\TasksController');
 
+Route::resource('channels', 'API\ChannelController');
+
 Route::post('tasks/update-order', 'API\TasksController@updateTaskOrder');
 Route::post('templates/fill', 'API\TemplatesController@fill');
 Route::post('templates/send', 'API\TemplatesController@send');
