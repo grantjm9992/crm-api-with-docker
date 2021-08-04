@@ -16,7 +16,7 @@ class Channel extends Model
     protected $table = 'channel';
 
     protected $fillable = [
-        'companyId',
+        'company_id',
         'name',
         'active'
     ];

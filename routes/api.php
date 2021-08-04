@@ -18,11 +18,13 @@ Route::post('register', 'API\AuthController@register');
 Route::post('login', 'API\AuthController@login')->name('login');
 
 Route::resource('users', 'API\UserController');
+Route::resource('companies', 'API\CompanyController');
 Route::resource('clients', 'API\ClientController');
 Route::resource('schools', 'API\SchoolController');
 Route::resource('students', 'API\StudentController');
 
 Route::resource('contact-types', 'API\ContactTypeController');
+Route::resource('contact-status', 'API\ContactStatusController');
 Route::resource('interests', 'API\InterestController');
 Route::resource('campaigns', 'API\CampaignController');
 Route::resource('products', 'API\ProductsController');

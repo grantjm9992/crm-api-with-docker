@@ -5,21 +5,27 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Ramsey\Uuid\Uuid;
 
-class Company extends BaseModel
+class ContactStatus extends BaseModel
 {
-    protected $table = 'companies';
+    protected $table = "contact_type";
 
     protected $fillable = [
+        'company_id',
         'name',
-        'token'
+        'active',
+        'colour'
     ];
+
+    protected $keyType = 'string';
+
+    public $incrementing = false;
 
     public static function boot()
     {
         parent::boot();
 
         static::creating(function (Model $model) {
-            $model->setAttribute('token', Uuid::uuid4());
+            $model->setAttribute($model->getKeyName(), Uuid::uuid4());
         });
     }
 }

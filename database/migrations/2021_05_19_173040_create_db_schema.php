@@ -122,7 +122,7 @@ class CreateDbSchema extends Migration
             $table->string('task_id')->index();
             $table->timestamps();
         });
-        
+
         Schema::create('documents_entities', function (Blueprint $table) {
             $table->uuid('id')->default(DB::raw('(UUID())'))->primary();
             $table->string('entity_type');
