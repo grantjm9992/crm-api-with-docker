@@ -34,6 +34,21 @@ class Contacts extends Model
         return $this->hasMany(Task::class, 'contact_id')->orderBy('order');;
     }
 
+    public function campaign()
+    {
+        return $this->belongsTo(Campaigns::class, 'campaign_id');
+    }
+
+    public function channel()
+    {
+        return $this->belongsTo(Channel::class, 'channel_id');
+    }
+
+    public function contactType()
+    {
+        return $this->belongsTo(ContactType::class, 'contact_type_id');
+    }   
+
     public function setDateAttribute($value)
     {
         $date = new DateTime($value);

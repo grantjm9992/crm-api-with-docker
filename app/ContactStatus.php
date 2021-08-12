@@ -7,7 +7,7 @@ use Ramsey\Uuid\Uuid;
 
 class ContactStatus extends BaseModel
 {
-    protected $table = "contact_type";
+    protected $table = "contact_status";
 
     protected $fillable = [
         'company_id',

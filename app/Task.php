@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Task extends Model
+class Task extends BaseModel
 {
     protected $fillable = [
         'title',
@@ -12,6 +12,7 @@ class Task extends Model
         'status',
         'user_id',
         'contact_id',
+        'company_id',
         'notes',
         'important',
         'starred',
@@ -20,7 +21,7 @@ class Task extends Model
         'type'
     ];
 
-    
+
     /**
      * Set the user's first name.
      *
@@ -33,7 +34,7 @@ class Task extends Model
         $this->attributes['start_date'] = $date_time->format('Y-m-d H:i:s');
     }
 
-    
+
     /**
      * Set the user's first name.
      *

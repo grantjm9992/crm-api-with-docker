@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\API;
 
+use App\Http\Middleware\ApiToken;
 use Illuminate\Http\Request;
 use App\Http\Controllers\API\BaseController as BaseController;
 use App\Contacts;
@@ -14,16 +15,27 @@ class ContactController extends BaseController
     public function index(Request $request)
     {
         $contacts = Contacts::whereRaw('1 = 1')->get();
-        // $contacts->whereRaw($this->makeWhere($request));
+        $newArray = [];
 
-        return $this->sendResponse(ContactResource::collection($contacts), 'Contacts retrieved successfully.');
+        foreach ($contacts as $contact) {
+            $contact->campaign;
+            $contact->channel;
+            $contact->contactType;
+            $newArray[] = $contact;
+        }
+
+        return $this->sendResponse(ContactResource::collection($newArray), 'Contacts retrieved successfully.');
     }
 
     public function store(Request $request)
     {
         $input = $request->all();
+        $user = ApiToken::getUserFromRequest($request);
+        $input['company_id'] = $user->getAttribute('company_id');
+
         $validator = Validator::make($input, [
-            'name' => 'required'
+            'name' => 'required',
+            'email' => 'required|unique:contacts'
         ]);
 
         if($validator->fails()){

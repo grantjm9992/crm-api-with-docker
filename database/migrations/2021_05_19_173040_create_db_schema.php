@@ -58,13 +58,6 @@ class CreateDbSchema extends Migration
             $table->timestamps();
         });
 
-        Schema::create('contact_status', function (Blueprint $table) {
-            $table->uuid('id')->default(DB::raw('(UUID())'))->primary();
-            $table->string('name');
-            $table->smallInteger('active')->default(1);
-            $table->timestamps();
-        });
-
         Schema::create('users', function (Blueprint $table) {
             $table->uuid('id')->default(DB::raw('(UUID())'))->primary();
             $table->string('company_id');

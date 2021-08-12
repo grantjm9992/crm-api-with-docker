@@ -16,9 +16,6 @@ class AddCompanyToTables extends Migration
         Schema::table('campaign', function (Blueprint $table) {
             $table->string('company_id');
         });
-        Schema::table('contact_status', function (Blueprint $table) {
-            $table->string('company_id');
-        });
         Schema::table('documents_entities', function (Blueprint $table) {
             $table->string('company_id');
         });

@@ -39,7 +39,7 @@ class ContactStatusController extends BaseController
         return $this->sendResponse(new ContactStatusResource($contactStatus), 'ContactStatus created successfully.');
     }
 
-    public function show(int $id)
+    public function show(string $id)
     {
         $contactStatus = ContactStatus::find($id);
 

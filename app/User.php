@@ -87,7 +87,7 @@ class User extends Authenticatable
 
     public function role()
     {
-        return $this->hasOne(\App\Role::class);
+        return $this->belongsTo(\App\Roles::class);
     }
 
     public function company(): BelongsTo

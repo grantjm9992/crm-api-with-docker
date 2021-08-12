@@ -19,6 +19,7 @@ class ContactStatus extends Migration
             $table->string('colour')->nullable();
             $table->smallInteger('active')->default(0);
             $table->string('company_id');
+            $table->timestamps();
         });
     }
 
