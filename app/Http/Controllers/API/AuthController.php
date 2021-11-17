@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\API;
 
 use App\Company;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use App\Http\Controllers\API\BaseController as BaseController;
 use App\User;
@@ -35,13 +36,41 @@ class AuthController  extends BaseController
         return $this->sendResponse(['success' => true], 'User register successfully.');
     }
 
+    public function routes(): JsonResponse
+    {
+        $routeArray = [[
+            'id' => 'example',
+            'title' => 'Example',
+            'type' => 'basic',
+            'icon' => 'heroicons_outline:chart-pie',
+            'link' => '/example'
+        ]];
+
+        $routes = [
+            'compact' => $routeArray,
+            'default' => $routeArray,
+            'futuristic' => $routeArray,
+            'horizontal' => $routeArray
+        ];
+        return response()->json($routes, 200);
+    }
+
     public function login(Request $request)
     {
         if(User::where(['email' => $request->email])->first()){
             $user = User::where(['email' => $request->email])->first();
             $success = array(
                 'token' => $user->generateToken(),
-                'user' => $user
+                'user' => $user,
+                'routes' => [
+                    [
+                        'id' => 'example',
+                        'title' => 'Example',
+                        'type' => 'basic',
+                        'icon' => 'heroicons_outline:chart-pie',
+                        'link' => '/example'
+                    ]
+                ]
             );
 
             return $this->sendResponse($success, 'User login successfully.');
