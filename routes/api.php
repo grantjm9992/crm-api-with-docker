@@ -19,6 +19,7 @@ Route::post('login', 'API\AuthController@login')->name('login');
 
 Route::get('routes', 'API\AuthController@routes');
 
+
 Route::resource('users', 'API\UserController');
 Route::resource('companies', 'API\CompanyController');
 Route::resource('clients', 'API\ClientController');
