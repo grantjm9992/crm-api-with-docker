@@ -17,17 +17,17 @@ class AuthController  extends BaseController
             'email' => 'required|email|unique:users',
         ]);
 
-        if($validator->fails()){
+        if ($validator->fails()){
             return $this->sendError('Validation Error.', $validator->errors());
         }
 
         $input = $request->all();
-        if (!isset($input['company_id'])) {
-            if (!isset($input['company_name'])) {
+        if (!isset($input['companyId'])) {
+            if (!isset($input['companyName'])) {
                 return $this->sendError('company_name_needed', ['Company name not found. Nor ID']);
             }
-            $company = Company::create(['name' => $input['company_name']]);
-            $input['company_id'] = $company->getAttribute('id')->toString();
+            $company = Company::create(['name' => $input['companyName']]);
+            $input['companyId'] = $company->getAttribute('id')->toString();
         }
         $user = User::create($input);
         $user->password = md5($request->password);
@@ -44,6 +44,24 @@ class AuthController  extends BaseController
             'type' => 'basic',
             'icon' => 'heroicons_outline:chart-pie',
             'link' => '/example'
+        ],[
+            'id' => 'dashboard',
+            'title' => 'Dashboard',
+            'type' => 'basic',
+            'icon' => 'heroicons_outline:clipboard-check',
+            'link' => '/dashboard'
+        ],[
+            'id' => 'apps.tasks',
+            'title' => 'Tasks',
+            'type' => 'basic',
+            'icon' => 'heroicons_outline:check-circle',
+            'link' => '/apps/scrumboard'
+        ],[
+            'id' => 'apps.contacts',
+            'title' => 'Contacts',
+            'type' => 'basic',
+            'icon' => 'heroicons_outline:user-group',
+            'link' => '/apps/contacts'
         ]];
 
         $routes = [
